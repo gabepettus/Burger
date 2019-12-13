@@ -1,15 +1,25 @@
 const mysql = require("mysql");
-const util = require("util");
 
-let PSWD = process.env.MYSQL_PSWD;
-let connection = mysql.createConnection({
+const PSWD = process.env.MYSQL_PSWD;
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
   password: PSWD,
-  database: "emplmang"
+  database: "burgers_db"
 });
 
+// Make connection.
+connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+})
+
+module.exports =  connection;
+/*
 function dbConnect() {
   // console.log("here");
   return {
@@ -23,5 +33,5 @@ function dbConnect() {
     }
   };
 };
-
 module.exports =  dbConnect();
+*/
