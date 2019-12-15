@@ -6,21 +6,21 @@ const router = express.Router();
 router.get("/", function(req, res) {
   burger.all(function(data) {
     const hbsObject = {
-      burger: data
+      burgers: data
     };
-    console.log(hbsObject);
+    console.log("router /",hbsObject);
     res.render("index", hbsObject);
   });
 });
 
-router.post("/api/burger", function(req, res) {
-  burger.create(["burger_name", "isDevoured"], [req.body.burger_name, req.body.isDevoured], function(result) {
+router.post("/api/burgers", function(req, res) {
+  burger.create(["burger", "isDevoured"], [req.body.burger_name, req.body.isDevoured], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/burger/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
   let condition = `id = ${req.params.id}`;
 
   console.log("condition", condition);

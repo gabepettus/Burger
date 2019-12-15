@@ -7,7 +7,7 @@ const orm = {
 
     db.query(sql, [tableName], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      console.log("select querry",sql,"resutl",result);
       cb(result);
     });
   },
