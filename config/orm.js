@@ -7,7 +7,7 @@ const orm = {
 
     db.query(sql, [tableName], function(err, result) {
       if (err) throw err;
-      console.log("select querry",sql,"resutl",result);
+      // console.log("select querry",sql,"resutl",result);
       cb(result);
     });
   },
@@ -19,7 +19,6 @@ const orm = {
 
     db.query(sql, [colsToIns[0].toString(),colsToIns[1].toString(),valsToIns[0].toString(),valsToIns[1].toString()], function(err, result) {
       if (err) throw err;
-      console.log(result);
       cb(result);
     });
   },
@@ -31,7 +30,7 @@ const orm = {
     queryString += " WHERE ";
     queryString += condition;
 
-    console.log(queryString);
+    // console.log(queryString);
     db.query(queryString, function(err, result) {
       if (err) {
         throw err;
