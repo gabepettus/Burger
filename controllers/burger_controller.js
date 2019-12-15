@@ -14,7 +14,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.create(["burger", "isDevoured"], [req.body.burger_name, req.body.isDevoured], function(result) {
+  console.log(req);
+  burger.create(["name", "isDevoured"], [req.body.burger_name, req.body.isDevoured], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
